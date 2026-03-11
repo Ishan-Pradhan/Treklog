@@ -20,7 +20,7 @@ import { Difficulty } from "../_types/TrekTypes";
 import { trekSchemaType } from "../_schema/TrekSchema";
 
 async function ListTreks() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/treks`);
+  const res = await fetch(`/api/treks`);
   const treks = await res.json();
   const totalTreks = treks.length;
 

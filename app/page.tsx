@@ -7,18 +7,18 @@ import TrekCard from "./_components/TrekCard";
 import { trekSchemaType } from "./_schema/TrekSchema";
 
 export default async function Home() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/treks`);
+  const res = await fetch(`/api/treks`);
   const treks = await res.json();
 
   const totalTreks = treks.length;
   const totalDistance = treks.reduce(
     (acc: number, trek: trekSchemaType) => acc + trek.distance,
-    0
+    0,
   );
 
   const totalTime = treks.reduce(
     (acc: number, trek: trekSchemaType) => acc + trek.time_taken,
-    0
+    0,
   );
 
   return (
