@@ -1,0 +1,82 @@
+{
+  "treks": [
+    {
+      "id": 1,
+      "trekDestination": "North ABC",
+      "distance": 35,
+      "timeTaken": 2,
+      "timeUnit": "Days",
+      "region": "Annapurna",
+      "date": "2025-10-18",
+      "difficulty": "Easy",
+      "latitude": 28.5306,
+      "longitude": 83.878,
+      "description": "A scenic trek to North Annapurna Base Camp with stunning mountain views."
+    },
+    {
+      "id": 2,
+      "trekDestination": "Mardi Himal",
+      "distance": 25,
+      "timeTaken": 3,
+      "timeUnit": "Days",
+      "region": "Annapurna",
+      "date": "2025-11-02",
+      "difficulty": "Easy",
+      "latitude": 28.4606,
+      "longitude": 83.8203,
+      "description": "A peaceful ridge trek offering close-up views of Machhapuchhre."
+    },
+    {
+      "id": 3,
+      "trekDestination": "Langtang Valley",
+      "distance": 62,
+      "timeTaken": 7,
+      "timeUnit": "Days",
+      "region": "Langtang",
+      "date": "2024-10-05",
+      "difficulty": "Hard",
+      "latitude": 28.211,
+      "longitude": 85.567,
+      "description": "A challenging high-altitude trek through Langtang Valley and glaciers."
+    },
+    {
+      "id": 4,
+      "trekDestination": "Gosaikunda",
+      "distance": 45,
+      "timeTaken": 5,
+      "timeUnit": "Days",
+      "region": "Langtang",
+      "date": "2024-09-20",
+      "difficulty": "Easy",
+      "latitude": 28.0856,
+      "longitude": 85.4146,
+      "description": "A spiritual trek to the sacred alpine lakes of Gosaikunda."
+    },
+    {
+      "id": 5,
+      "trekDestination": "Shivapuri Day Hike",
+      "distance": 14,
+      "timeTaken": 6,
+      "timeUnit": "Hours",
+      "region": "Kathmandu Valley",
+      "date": "2025-01-06",
+      "difficulty": "Easy",
+      "latitude": 27.8056,
+      "longitude": 85.38,
+      "description": "A short and refreshing hike through Shivapuri National Park."
+    },
+    {
+      "id": 6,
+      "trekDestination": "Kapuche and Kori",
+      "distance": 70,
+      "timeTaken": 3,
+      "timeUnit": "Days",
+      "region": "Annapurna",
+      "date": "2024-08-11",
+      "difficulty": "Easy",
+      "latitude": 28.427,
+      "longitude": 84.102,
+      "description": "A remote trek combining Kapuche Lake and Kori village trails."
+    }
+  ]
+}
