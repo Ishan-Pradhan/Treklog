@@ -1,9 +1,4 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
-import dynamic from "next/dynamic";
-import MapLoading from "@/app/_components/Loading-Components/MapLoading";
+import Map from "@/app/_components/MapWrapper";
 import {
   CalendarIcon,
   CircleIcon,
@@ -11,44 +6,18 @@ import {
   MapPinIcon,
   PenIcon,
   TrendUpIcon,
-} from "@phosphor-icons/react";
-import { trekSchemaType } from "@/app/_schema/TrekSchema";
-import Loading from "./loading";
+} from "@phosphor-icons/react/ssr";
 import { format } from "date-fns";
 import Link from "next/link";
+import { getTrekById } from "@/app/_lib/trekActions";
+import { notFound } from "next/navigation";
 
-function TrekPreview() {
-  const { id } = useParams();
-  const trekId = Number(id);
-
-  const [trek, setTrek] = useState<trekSchemaType | null>(null);
-
-  const Map = useMemo(
-    () =>
-      dynamic(() => import("../../_components/Map"), {
-        loading: () => <MapLoading />,
-        ssr: false,
-      }),
-    []
-  );
-
-  useEffect(() => {
-    const fetchTrek = async () => {
-      try {
-        const res = await fetch(`/api/treks/`);
-
-        const data = await res.json();
-        const found = data.find((t: trekSchemaType) => t.id === trekId);
-        setTrek(found);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchTrek();
-  }, [trekId]);
+async function TrekPreview({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const trek = await getTrekById(id);
 
   if (!trek) {
-    return <Loading />;
+    return notFound();
   }
 
   return (
@@ -116,8 +85,8 @@ function TrekPreview() {
                   trek?.difficulty === "Easy"
                     ? "green"
                     : trek?.difficulty === "Moderate"
-                    ? "orange"
-                    : "red"
+                      ? "orange"
+                      : "red"
                 }
               />
               <div className="flex gap-1 items-center">

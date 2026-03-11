@@ -5,10 +5,10 @@ import Link from "next/link";
 import Button from "./_components/Button";
 import TrekCard from "./_components/TrekCard";
 import { trekSchemaType } from "./_schema/TrekSchema";
+import { getTreks } from "./_lib/trekActions";
 
 export default async function Home() {
-  const res = await fetch(`/api/treks`);
-  const treks = await res.json();
+  const treks = await getTreks();
 
   const totalTreks = treks.length;
   const totalDistance = treks.reduce(

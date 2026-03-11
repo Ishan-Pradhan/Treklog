@@ -75,7 +75,7 @@ export default function EditTrek() {
         loading: () => <MapLoading />,
         ssr: false,
       }),
-    []
+    [],
   );
 
   const form = useForm<trekSchemaType>({
@@ -106,11 +106,16 @@ export default function EditTrek() {
 
     const fetchTrek = async () => {
       try {
-        const res = await fetch(`/api/treks/`);
-        const trek = await res.json();
-        const data = trek.find((t: trekSchemaType) => t.id === trekId);
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from("treks")
+          .select("*")
+          .eq("id", trekId)
+          .single();
 
-        if (!mounted) return;
+        if (error) throw error;
+
+        if (!mounted || !data) return;
 
         form.reset({
           trek_destination: data.trek_destination,
@@ -336,7 +341,7 @@ export default function EditTrek() {
                         field.onChange(
                           e.target.value === ""
                             ? undefined
-                            : Number(e.target.value)
+                            : Number(e.target.value),
                         )
                       }
                       id="time_taken"

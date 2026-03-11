@@ -1,14 +1,15 @@
-import { createClient } from "@/app/_lib/client";
+import { getTreks } from "../../_lib/trekActions";
 
-const supabase = createClient();
 export async function GET() {
-  const { data, error } = await supabase.from("treks").select("*");
-  if (error)
+  try {
+    const treks = await getTreks();
+    return new Response(JSON.stringify(treks), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error: any) {
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
     });
-  return new Response(JSON.stringify(data), {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-  });
+  }
 }

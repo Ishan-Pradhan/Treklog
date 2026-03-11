@@ -18,10 +18,10 @@ import {
 import TrekListCard from "../_components/TrekListCard";
 import { Difficulty } from "../_types/TrekTypes";
 import { trekSchemaType } from "../_schema/TrekSchema";
+import { getTreks } from "../_lib/trekActions";
 
 async function ListTreks() {
-  const res = await fetch(`/api/treks`);
-  const treks = await res.json();
+  const treks = await getTreks();
   const totalTreks = treks.length;
 
   return (
