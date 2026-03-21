@@ -28,9 +28,9 @@ function DashboardCard({
     <div className="flex justify-between items-center bg-white shadow-md  p-4 px-8 rounded-xl border-2 border-gray-200">
       <div className="flex flex-col gap-2">
         <span className="text-stone-500">{title}</span>
-        <div className="flex gap-2 items-end truncate">
-          <span className="text-stone-900 text-4xl font-bold truncate max-w-40">{displayContent}</span>
-          <span className="text-stone-600 text-xl font-semibold">
+        <div className="flex gap-2 items-baseline flex-wrap sm:flex-nowrap">
+          <span className="text-stone-900 text-4xl font-bold truncate shrink">{displayContent}</span>
+          <span className="text-stone-600 text-lg sm:text-xl font-semibold shrink-0">
             {contentUnit}
           </span>
         </div>
