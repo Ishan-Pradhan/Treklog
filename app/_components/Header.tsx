@@ -15,7 +15,7 @@ function Header() {
   const { user } = useAuth();
 
   return (
-    <div className="container mx-auto  flex justify-between py-5 shadow-2xs font-poppins">
+    <div className="container mx-auto flex flex-col md:flex-row justify-between items-center py-4 md:py-5 shadow-2xs font-poppins gap-4 md:gap-0">
       <div className=" flex items-center gap-2">
         <div className="bg-primary-500 p-2 rounded-xl text-white ">
           <MapTrifoldIcon size={24} />
@@ -25,7 +25,7 @@ function Header() {
         </span>
       </div>
 
-      <ul className="flex gap-6 items-center">
+      <ul className="flex flex-wrap justify-center md:justify-end gap-2 md:gap-6 items-center w-full md:w-auto">
         <li>
           <Link
             href={"/"}
@@ -35,8 +35,8 @@ function Header() {
                 : "text-stone-700"
             }`}
           >
-            <MapTrifoldIcon size={24} />
-            <span className="">Dashboard</span>
+            <MapTrifoldIcon size={20} className="md:w-6 md:h-6" />
+            <span className="text-sm md:text-base">Dashboard</span>
           </Link>
         </li>
         <li>
@@ -48,8 +48,8 @@ function Header() {
                 : "text-stone-700"
             }`}
           >
-            <ListBulletsIcon size={24} />
-            <span className="">My Treks</span>
+            <ListBulletsIcon size={20} className="md:w-6 md:h-6" />
+            <span className="text-sm md:text-base">My Treks</span>
           </Link>
         </li>
         <li>
@@ -61,8 +61,8 @@ function Header() {
                 : "text-stone-700"
             }`}
           >
-            <PlusCircleIcon size={24} />
-            <span className="">New Trek</span>
+            <PlusCircleIcon size={20} className="md:w-6 md:h-6" />
+            <span className="text-sm md:text-base">New Trek</span>
           </Link>
         </li>
         {user && (
