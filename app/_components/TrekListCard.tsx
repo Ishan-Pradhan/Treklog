@@ -13,10 +13,10 @@ function TrekListCard({
   difficulty,
 }: TrekTypes) {
   return (
-    <div className="flex justify-between items-center bg-white px-6 py-4 rounded-md border border-gray-100 shadow-sm hover:bg-stone-100 cursor-pointer transition-colors duration-150 ease-in-out">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 sm:gap-4 bg-white px-6 py-4 rounded-md border border-gray-100 shadow-sm hover:bg-stone-100 cursor-pointer transition-colors duration-150 ease-in-out">
       <div className="flex flex-col gap-6">
-        <div className="flex gap-4 items-center">
-          <span className=" text-xl font-medium">{trek_destination}</span>
+        <div className="flex gap-4 items-center flex-wrap">
+          <span className="text-xl font-medium line-clamp-2">{trek_destination}</span>
           <span
             className={`px-4 py-1 rounded-full text-xs ${
               difficulty === "Easy"

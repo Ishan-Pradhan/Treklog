@@ -52,9 +52,9 @@ async function TrekPreview({ params }: { params: Promise<{ id: string }> }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col p-10">
-          <div className="grid grid-cols-3 bg-stone-50 border border-gray-100 rounded-2xl items-center justify-center p-5">
-            <div className="flex flex-col gap-2 items-center border-r border-gray-300">
+        <div className="flex flex-col px-5 sm:px-10 py-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 bg-stone-50 border border-gray-100 rounded-2xl items-center justify-center p-5">
+            <div className="flex flex-col gap-2 items-center border-b sm:border-b-0 sm:border-r border-gray-300 pb-5 sm:pb-0">
               <TrendUpIcon size={28} fill="green" />
               <div className="flex gap-1 items-center truncate">
                 <span className="font-semibold text-xl text-stone-900 ">
@@ -66,7 +66,7 @@ async function TrekPreview({ params }: { params: Promise<{ id: string }> }) {
                 distance
               </span>
             </div>
-            <div className="flex flex-col gap-2 items-center border-r border-gray-300">
+            <div className="flex flex-col gap-2 items-center border-b sm:border-b-0 sm:border-r border-gray-300 pb-5 sm:pb-0">
               <ClockIcon size={28} fill="orange" />
               <div className="flex gap-1 items-center truncate">
                 <span className="font-semibold text-xl text-stone-900">
@@ -104,7 +104,7 @@ async function TrekPreview({ params }: { params: Promise<{ id: string }> }) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 px-10">
+        <div className="flex flex-col gap-4 px-5 sm:px-10">
           <div className="flex items-center gap-3">
             <CalendarIcon size={24} weight="duotone" fill="gray" />
             <div className="flex gap-2 items-center text-lg">

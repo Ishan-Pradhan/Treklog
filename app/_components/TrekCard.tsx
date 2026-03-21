@@ -19,8 +19,8 @@ function TrekCard({
   return (
     <div className="flex flex-col gap-4 w-full  bg-white shadow-md px-6 py-3 rounded-xl border border-gray-100  items-start">
       <div className="flex flex-col gap-2 w-full">
-        <div className="flex justify-between items-center w-full">
-          <span className="text-xl text-stone-900 font-semibold flex-1">
+        <div className="flex justify-between items-start w-full gap-2">
+          <span className="text-xl text-stone-900 font-semibold flex-1 line-clamp-2">
             {trek_destination}
           </span>
           <span

@@ -35,7 +35,7 @@ export default async function Home() {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-8 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-10">
         <DashboardCard
           title="Treks Completed"
           color="blue"
@@ -69,7 +69,7 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-6 mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-5">
           {treks?.map((trek: trekSchemaType) => {
             return (
               <TrekCard
