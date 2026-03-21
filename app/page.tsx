@@ -17,7 +17,10 @@ export default async function Home() {
   );
 
   const totalTime = treks.reduce(
-    (acc: number, trek: trekSchemaType) => acc + trek.time_taken,
+    (acc: number, trek: trekSchemaType) => {
+      const time = trek.time_taken || 0;
+      return acc + (trek.time_unit === "Days" ? time * 24 : time);
+    },
     0,
   );
 

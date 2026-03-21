@@ -5,6 +5,7 @@ import {
 } from "@phosphor-icons/react/ssr";
 import { TrekTypes } from "../_types/TrekTypes";
 import { format } from "date-fns";
+import { formatNumber } from "../_lib/utils";
 
 function TrekCard({
   trek_destination,
@@ -47,12 +48,12 @@ function TrekCard({
       <div className="flex gap-4 items-center text-stone-500 text-md font-light">
         <div className="flex gap-2 items-center">
           <TrendUpIcon className="text-primary-500" />
-          <span>{distance} km</span>
+          <span className="truncate max-w-20">{formatNumber(distance)} km</span>
         </div>
         <div className="flex gap-2 items-center">
           <ClockClockwiseIcon className="text-primary-500" />
-          <span>
-            {time_taken} {time_unit}
+          <span className="truncate max-w-20">
+            {formatNumber(time_taken)} {time_unit}
           </span>
         </div>
       </div>

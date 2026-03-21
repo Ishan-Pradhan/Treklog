@@ -12,6 +12,7 @@ import Link from "next/link";
 import { getTrekById } from "@/app/_lib/trekActions";
 import { notFound } from "next/navigation";
 import DeleteTrekButton from "@/app/_components/DeleteTrekButton";
+import { formatNumber } from "@/app/_lib/utils";
 
 async function TrekPreview({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -55,9 +56,9 @@ async function TrekPreview({ params }: { params: Promise<{ id: string }> }) {
           <div className="grid grid-cols-3 bg-stone-50 border border-gray-100 rounded-2xl items-center justify-center p-5">
             <div className="flex flex-col gap-2 items-center border-r border-gray-300">
               <TrendUpIcon size={28} fill="green" />
-              <div className="flex gap-1 items-center">
+              <div className="flex gap-1 items-center truncate">
                 <span className="font-semibold text-xl text-stone-900 ">
-                  {trek?.distance}{" "}
+                  {formatNumber(trek?.distance)}{" "}
                 </span>
                 <span className="text-base text-stone-500">km</span>
               </div>
@@ -67,9 +68,9 @@ async function TrekPreview({ params }: { params: Promise<{ id: string }> }) {
             </div>
             <div className="flex flex-col gap-2 items-center border-r border-gray-300">
               <ClockIcon size={28} fill="orange" />
-              <div className="flex gap-1 items-center">
+              <div className="flex gap-1 items-center truncate">
                 <span className="font-semibold text-xl text-stone-900">
-                  {trek?.time_taken}{" "}
+                  {formatNumber(trek?.time_taken)}{" "}
                 </span>
                 <span className="font-semibold text-xl text-stone-900">
                   {trek?.time_unit}

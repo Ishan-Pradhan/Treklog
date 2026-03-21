@@ -1,10 +1,7 @@
-import { createClient } from "@/app/_lib/client";
+import { createClient } from "@/app/_lib/server";
 import { trekSchemaType } from "@/app/_schema/TrekSchema";
 import { NextRequest, NextResponse } from "next/server";
 
-// TODO Fix error: installHook.js:1 No trek found with id
-
-const supabase = createClient();
 export async function PUT(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -14,6 +11,8 @@ export async function PUT(
 
   console.log("Updating trek id:", id);
   console.log("Body:", body);
+  
+  const supabase = await createClient();
   const { data, error } = await supabase
     .from("treks")
     .update(body)
@@ -41,6 +40,8 @@ export async function DELETE(
   const { id } = await params;
 
   console.log("Deleting trek id:", id);
+  
+  const supabase = await createClient();
   const { error } = await supabase
     .from("treks")
     .delete()

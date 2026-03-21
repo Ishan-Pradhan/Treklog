@@ -1,6 +1,7 @@
 import { Calendar, MapPin } from "lucide-react";
 import { TrekTypes } from "../_types/TrekTypes";
 import { format } from "date-fns";
+import { formatNumber } from "../_lib/utils";
 
 function TrekListCard({
   trek_destination,
@@ -41,17 +42,17 @@ function TrekListCard({
       </div>
 
       <div className="flex gap-3">
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 max-w-24">
           <span className="text-stone-500 text-lg">DIST</span>
-          <div className="flex gap-1 items-center">
-            <span>{distance}</span>
+          <div className="flex gap-1 items-center truncate">
+            <span>{formatNumber(distance)}</span>
             <span>km</span>
           </div>
         </div>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 max-w-24">
           <span className="text-stone-500 text-lg">TIME</span>
-          <div className="flex gap-1 items-center">
-            <span>{time_taken}</span>
+          <div className="flex gap-1 items-center truncate">
+            <span>{formatNumber(time_taken)}</span>
             <span>{time_unit}</span>
           </div>
         </div>
