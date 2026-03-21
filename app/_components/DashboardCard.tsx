@@ -19,12 +19,20 @@ function DashboardCard({
   contentUnit,
   color,
 }: DashboardCardPropType) {
+  const formatContent = (value: number) => {
+    if (value >= 1000000) return (value / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+    if (value >= 1000) return (value / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+    return value;
+  };
+
+  const displayContent = typeof content === "number" && title === "Total Distance" ? formatContent(content) : content;
+
   return (
     <div className="flex justify-between items-center bg-white shadow-md  p-4 px-8 rounded-xl border-2 border-gray-200">
       <div className="flex flex-col gap-2">
         <span className="text-stone-500">{title}</span>
         <div className="flex gap-2 items-end">
-          <span className="text-stone-900 text-4xl font-bold">{content}</span>
+          <span className="text-stone-900 text-4xl font-bold">{displayContent}</span>
           <span className="text-stone-600 text-xl font-semibold">
             {contentUnit}
           </span>

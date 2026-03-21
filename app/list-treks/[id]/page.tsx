@@ -11,6 +11,7 @@ import { format } from "date-fns";
 import Link from "next/link";
 import { getTrekById } from "@/app/_lib/trekActions";
 import { notFound } from "next/navigation";
+import DeleteTrekButton from "@/app/_components/DeleteTrekButton";
 
 async function TrekPreview({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -22,10 +23,11 @@ async function TrekPreview({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     <div className="container my-10 flex flex-col">
-      <div className="flex justify-end items-center">
-        <Link href={`/list-treks/${id}/edit`}>
+      <div className="flex justify-end items-center gap-4">
+        <Link href={`/list-treks/${id}/edit`} className="text-stone-500 hover:text-stone-900 transition-colors">
           <PenIcon size={24} />
         </Link>
+        <DeleteTrekButton id={id} />
       </div>
       <div className="flex flex-col max-w-4xl mx-auto rounded-3xl overflow-hidden bg-white pb-8 shadow-md">
         <div className="relative ">

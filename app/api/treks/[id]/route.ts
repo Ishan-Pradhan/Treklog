@@ -33,3 +33,22 @@ export async function PUT(
 
   return NextResponse.json(data[0]);
 }
+
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+
+  console.log("Deleting trek id:", id);
+  const { error } = await supabase
+    .from("treks")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json({ message: "Deleted successfully" });
+}
