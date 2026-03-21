@@ -1,6 +1,7 @@
 import { createClient } from "@/app/_lib/server";
 import { trekSchemaType } from "@/app/_schema/TrekSchema";
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 export async function PUT(
   req: NextRequest,
@@ -13,24 +14,20 @@ export async function PUT(
   console.log("Body:", body);
   
   const supabase = await createClient();
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("treks")
     .update(body)
-    .eq("id", Number(id))
-    .select();
+    .eq("id", Number(id));
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  if (!data || data.length === 0) {
-    return NextResponse.json(
-      { error: `No trek found with id ${id}` },
-      { status: 404 }
-    );
-  }
+  revalidatePath("/");
+  revalidatePath("/list-treks");
+  revalidatePath(`/list-treks/${id}`);
 
-  return NextResponse.json(data[0]);
+  return NextResponse.json({ message: "Updated successfully" });
 }
 
 export async function DELETE(
@@ -50,6 +47,9 @@ export async function DELETE(
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+
+  revalidatePath("/");
+  revalidatePath("/list-treks");
 
   return NextResponse.json({ message: "Deleted successfully" });
 }
