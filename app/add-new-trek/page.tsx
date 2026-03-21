@@ -176,33 +176,14 @@ export default function AddNewTrek() {
                       <label htmlFor="region" className="text-stone-400 ">
                         <MapPinIcon size={16} />
                       </label>
-                      <Select
-                        name={field.name}
-                        value={field.value}
-                        onValueChange={field.onChange}
-                      >
-                        <SelectTrigger
-                          id="region"
-                          aria-invalid={fieldState.invalid}
-                          className="min-w-30 border-none shadow-none w-full focus-visible:ring-0"
-                        >
-                          <SelectValue placeholder="Select Region" />
-                        </SelectTrigger>
-                        <SelectContent position="item-aligned">
-                          <SelectGroup>
-                            <SelectLabel>Select Region</SelectLabel>
-                            <SelectSeparator />
-                            {region.map((region) => (
-                              <SelectItem
-                                key={region.value}
-                                value={region.value}
-                              >
-                                {region.label}
-                              </SelectItem>
-                            ))}
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
+                      <Input
+                        {...field}
+                        id="region"
+                        aria-invalid={fieldState.invalid}
+                        placeholder="E.g. Annapurna"
+                        autoComplete="off"
+                        className="border-none shadow-none focus-visible:ring-0 px-0"
+                      />
                     </div>
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />

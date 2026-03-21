@@ -22,6 +22,14 @@ export default function TrekListClient({ treks }: { treks: trekSchemaType[] }) {
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc");
 
+  const uniqueRegions = useMemo(() => {
+    const regions = new Set<string>();
+    treks.forEach((t) => {
+      if (t.region) regions.add(t.region);
+    });
+    return Array.from(regions).sort((a, b) => a.localeCompare(b));
+  }, [treks]);
+
   const filteredAndSortedTreks = useMemo(() => {
     let result = [...treks];
 
@@ -86,11 +94,11 @@ export default function TrekListClient({ treks }: { treks: trekSchemaType[] }) {
               <SelectGroup>
                 <SelectLabel>Select Region</SelectLabel>
                 <SelectItem value="all">All Regions</SelectItem>
-                <SelectItem value="Annapurna">Annapurna</SelectItem>
-                <SelectItem value="Langtang">Langtang</SelectItem>
-                <SelectItem value="Kathmandu">Kathmandu</SelectItem>
-                <SelectItem value="Manang">Manang</SelectItem>
-                <SelectItem value="Mustang">Mustang</SelectItem>
+                {uniqueRegions.map((region) => (
+                  <SelectItem key={region} value={region}>
+                    {region}
+                  </SelectItem>
+                ))}
               </SelectGroup>
             </SelectContent>
           </Select>
