@@ -71,15 +71,15 @@ export default function TrekListClient({ treks }: { treks: trekSchemaType[] }) {
   return (
     <>
       {/* Page search and filters */}
-      <div className="bg-white border-2 border-gray-100 p-5 rounded-xl shadow-md mt-4 grid grid-cols-6 gap-4">
-        <div className="border border-gray-200 focus-within:border focus-within:border-primary-500 flex gap-2 items-center text-stone-700 bg-stone-50 col-span-3 rounded-md">
+      <div className="bg-white border-2 border-gray-100 p-4 lg:p-5 rounded-xl shadow-md mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3 lg:gap-4">
+        <div className="border border-gray-200 flex gap-2 items-center text-stone-700 bg-stone-50 md:col-span-2 lg:col-span-3 rounded-md focus-within:border focus-within:border-primary-500">
           <label htmlFor="search" className="text-xl text-stone-500 pl-4">
             <MagnifyingGlassIcon />
           </label>
           <input
             id="search"
             type="text"
-            className="focus:outline-none placeholder:text-stone-300 w-full pl-2 pr-4 py-2 bg-transparent"
+            className="focus:outline-none placeholder:text-stone-300 w-full pl-2 pr-4 py-3 lg:py-2 bg-transparent"
             placeholder="Search Treks..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -87,7 +87,7 @@ export default function TrekListClient({ treks }: { treks: trekSchemaType[] }) {
         </div>
         <div className="col-span-1">
           <Select value={selectedRegion} onValueChange={setSelectedRegion}>
-            <SelectTrigger className="w-full bg-stone-50 py-5">
+            <SelectTrigger className="w-full bg-stone-50 py-6 lg:py-5">
               <SelectValue placeholder="All Regions" />
             </SelectTrigger>
             <SelectContent>
@@ -105,7 +105,7 @@ export default function TrekListClient({ treks }: { treks: trekSchemaType[] }) {
         </div>
         <div className="col-span-1 w-full">
           <Select value={selectedDifficulty} onValueChange={setSelectedDifficulty}>
-            <SelectTrigger className="w-full bg-stone-50 py-5">
+            <SelectTrigger className="w-full bg-stone-50 py-6 lg:py-5">
               <SelectValue placeholder="Difficulty" />
             </SelectTrigger>
             <SelectContent>
@@ -119,13 +119,13 @@ export default function TrekListClient({ treks }: { treks: trekSchemaType[] }) {
             </SelectContent>
           </Select>
         </div>
-        <div className="col-span-1">
+        <div className="col-span-1 md:col-span-2 lg:col-span-1">
           <button 
             onClick={() => setSortOrder(prev => prev === "desc" ? "asc" : "desc")}
-            className="bg-stone-50 flex gap-2 justify-center items-center w-full h-full rounded-md border border-gray-200 px-4 hover:bg-stone-100 transition-colors text-stone-500"
+            className="bg-stone-50 flex gap-2 justify-center items-center w-full h-full min-h-[48px] lg:min-h-0 rounded-md border border-gray-200 px-4 hover:bg-stone-100 transition-colors text-stone-500"
           >
             <ArrowsDownUpIcon size={20} />
-            <span className="text-sm">Date ({sortOrder === "desc" ? "New" : "Old"})</span>
+            <span className="text-sm lg:text-base">Date ({sortOrder === "desc" ? "New" : "Old"})</span>
           </button>
         </div>
       </div>
