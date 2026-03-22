@@ -58,9 +58,9 @@ const region = [
 ];
 
 const difficulties = [
-  { label: "Easy" },
-  { label: "Moderate" },
-  { label: "Hard" },
+  { label: "Easy", sm: "E" },
+  { label: "Moderate", sm: "M" },
+  { label: "Hard", sm: "H" },
 ];
 
 export default function AddNewTrek() {
@@ -70,7 +70,7 @@ export default function AddNewTrek() {
         loading: () => <MapLoading />,
         ssr: false,
       }),
-    []
+    [],
   );
 
   const form = useForm<trekSchemaType>({
@@ -283,7 +283,7 @@ export default function AddNewTrek() {
                         field.onChange(
                           e.target.value === ""
                             ? undefined
-                            : Number(e.target.value)
+                            : Number(e.target.value),
                         )
                       }
                       id="time_taken"
@@ -409,8 +409,11 @@ export default function AddNewTrek() {
                             className="h-1"
                           >
                             <FieldContent className="flex items-center justify-center h-0">
-                              <FieldTitle className="h-0">
+                              <FieldTitle className="h-0 hidden md:flex">
                                 {difficulty.label}
+                              </FieldTitle>
+                              <FieldTitle className="h-0 md:hidden">
+                                {difficulty.sm}
                               </FieldTitle>
                             </FieldContent>
                             <RadioGroupItem
